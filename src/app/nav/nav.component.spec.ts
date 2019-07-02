@@ -8,9 +8,9 @@ describe('NavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NavComponent]
+      declarations: [ NavComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,14 +23,3 @@ describe('NavComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-export class NavComponent implements OnInit {
-
-  appTitle = 'myapp';
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}

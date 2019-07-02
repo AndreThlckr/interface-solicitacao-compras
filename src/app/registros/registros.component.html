@@ -1,1 +1,14 @@
-<p>registros works!</p>
+<ul *ngIf="solicitacoes">
+  <li *ngFor="let solicitacao of solicitacoes">
+    <p>{{ solicitacao.nome }}, {{ solicitacao.descricao }}, com um valor de {{ solicitacao.preco }}.</p>
+    <p *ngIf="solicitacao.situacao === null">Situação: em aberto.</p>
+    <p *ngIf="solicitacao.situacao === true">Situação: aprovada.</p>
+    <p *ngIf="solicitacao.situacao === null">Situação: reprovada, pelo motivo: {{ solicitacao.motivo }</p>
+
+
+
+  </li>
+</ul>
+<p *ngIf="!solicitacoes.length">
+  Nenhuma solicitação cadastrada!
+</p>

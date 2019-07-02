@@ -2,30 +2,30 @@ header {
   background: #7700FF;
 }
 
-nav {
+header nav {
   justify-self: right;
 }
 
-ul {
+header ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
+header li {
   float: left;
 }
 
-a {
+header a {
   padding: 1.5em;
   text-transform: uppercase;
   font-size: .8em;
 }
 
-&:hover {
+header &:hover {
   background: #8E2BFF;
 }
 
-.logo {
+header .logo {
   font-weight: bold;
 }
