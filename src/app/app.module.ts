@@ -13,6 +13,7 @@ import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
 import { AprovacaoComponent } from './aprovacao/aprovacao.component';
 import { RegistrosComponent } from './registros/registros.component';
 import { LoginComponent } from './login/login.component';
+import { ListaDeEsperaComponent } from './lista-de-espera/lista-de-espera.component';
 
 registerLocaleData(localePT);
 
@@ -23,7 +24,8 @@ registerLocaleData(localePT);
     SolicitacaoComponent,
     AprovacaoComponent,
     RegistrosComponent,
-    LoginComponent
+    LoginComponent,
+    ListaDeEsperaComponent
   ],
   imports: [
     BrowserModule,
