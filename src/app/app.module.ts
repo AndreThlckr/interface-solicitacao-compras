@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {LOCALE_ID} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +29,7 @@ registerLocaleData(localePT);
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [
     {

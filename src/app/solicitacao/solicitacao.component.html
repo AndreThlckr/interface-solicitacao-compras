@@ -1,1 +1,17 @@
-<p>solicitacao works!</p>
+<h3>Fazer solicitação:</h3>
+
+<div class="form-group">
+    <input type="text" [(ngModel)]="solicitacaoDetails.nome" class="form-control" placeholder="Nome">
+</div>
+
+<div class="form-group">
+    <input type="text" [(ngModel)]="solicitacaoDetails.descricao" class="form-control" placeholder="Descrição">
+</div>
+
+<div class="form-group">
+    <input type="number" [(ngModel)]="solicitacaoDetails.preco" class="form-control" placeholder="Preço">
+</div>
+
+<div class="form-group">
+    <button (click)="addSolicitacao()">Solicitar</button>
+</div>

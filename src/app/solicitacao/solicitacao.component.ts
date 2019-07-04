@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,10 +10,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SolicitacaoComponent implements OnInit {
 
-  constructor() { }
+  @Input() solicitacaoDetails = { nome: '', descricao: '', preco: 0 }
 
-  ngOnInit() {
+  constructor(
+    public dataService: DataService, 
+    public router: Router
+  ) { }
+
+  ngOnInit() { }
+
+  addSolicitacao(dataEmployee) {
+    this.dataService.createSolicitacao(this.solicitacaoDetails).subscribe((data: {}) => {
+      this.router.navigate([''])
+    })
   }
-
 
 }
