@@ -9,15 +9,18 @@ import { DataService } from '../data.service';
 
 export class RegistrosComponent implements OnInit {
 
-  solicitacoes: Object;
+  Solicitacao: any = [];
 
-  constructor(private solicitacao: DataService) { }
+  constructor(public dataService: DataService) { }
 
   ngOnInit() {
-    this.solicitacao.getSolicitacoes().subscribe(solicitacao => {
-      this.solicitacoes = solicitacao
-      console.log(this.solicitacoes);
-    }
-    );
+    this.loadSolicitacoes()
   }
+
+  loadSolicitacoes() {
+    return this.dataService.getSolicitacoes().subscribe((data: {}) => {
+      this.Solicitacao = data;
+    })
+  }
+  
 }

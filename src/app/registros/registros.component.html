@@ -1,4 +1,4 @@
-<form [formGroup]="pesquisa">
+<form>
   <label>
     Nome:
     <input type="text">
@@ -14,20 +14,23 @@
   <label><input type="radio" name="sit" value="false"> Reprovados</label>
 </form>
 
-<ul *ngIf="solicitacoes">
-  <li *ngFor="let solicitacao of solicitacoes">
 
-    <p>Nome: {{ solicitacao.nome }}</p>
-    <p>Descrição:{{ solicitacao.descricao }}</p>
-    <p>Valor: {{ solicitacao.preco | currency:'BRL'}}.</p>
-    <p>Situação: {{solicitacao.situacao?'aprovada':'reprovada'}}</p>
-    <p *ngIf="solicitacao.situacao === false">
-      Motivo: {{ solicitacao.motivo }
-  </p>
-
-  </li>
-</ul>
-
-<p *ngIf="!solicitacoes.length">
+<p *ngIf="Solicitacao.length == 0">
   Não há nenhuma solicitação!
 </p>
+          
+          <ul *ngIf="Solicitacao.length !== 0">
+            <li *ngFor="let solicitacao of Solicitacao">
+
+                <p>Nome: {{ solicitacao.nome }}</p>
+                <p>Descrição:{{ solicitacao.descricao }}</p>
+                <p>Valor: {{ solicitacao.preco | currency:'BRL'}}.</p>
+                <p>Situação: {{solicitacao.situacao?'aprovada':'reprovada'}}</p>
+                <p *ngIf="solicitacao.situacao === false">
+                  Motivo: {{ solicitacao.motivo }
+              </p>
+            </li>
+          </ul>
+      
+    
+  
