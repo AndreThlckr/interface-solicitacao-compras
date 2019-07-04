@@ -1,14 +1,33 @@
+<form [formGroup]="pesquisa">
+  <label>
+    Nome:
+    <input type="text">
+  </label>
+
+  <label>
+    Descrição:
+    <input type="text">
+  </label>
+
+  <label><input type="radio" name="sit" value="" checked> Todos</label>
+  <label><input type="radio" name="sit" value="true"> Aprovados</label>
+  <label><input type="radio" name="sit" value="false"> Reprovados</label>
+</form>
+
 <ul *ngIf="solicitacoes">
   <li *ngFor="let solicitacao of solicitacoes">
-    <p>{{ solicitacao.nome }}, {{ solicitacao.descricao }}, com um valor de {{ solicitacao.preco }}.</p>
-    <p *ngIf="solicitacao.situacao === null">Situação: em aberto.</p>
-    <p *ngIf="solicitacao.situacao === true">Situação: aprovada.</p>
-    <p *ngIf="solicitacao.situacao === null">Situação: reprovada, pelo motivo: {{ solicitacao.motivo }</p>
 
-
+    <p>Nome: {{ solicitacao.nome }}</p>
+    <p>Descrição:{{ solicitacao.descricao }}</p>
+    <p>Valor: {{ solicitacao.preco | currency:'BRL'}}.</p>
+    <p>Situação: {{solicitacao.situacao?'aprovada':'reprovada'}}</p>
+    <p *ngIf="solicitacao.situacao === false">
+      Motivo: {{ solicitacao.motivo }
+  </p>
 
   </li>
 </ul>
+
 <p *ngIf="!solicitacoes.length">
-  Nenhuma solicitação cadastrada!
+  Não há nenhuma solicitação!
 </p>

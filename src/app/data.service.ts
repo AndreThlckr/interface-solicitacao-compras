@@ -9,7 +9,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getSolicitacoes() {
-    return this.http.get('http://localhost:8080/solicitacoes')
+    return this.http.get('http://localhost:8080/solicitacoes/busca')
   }
 
 }

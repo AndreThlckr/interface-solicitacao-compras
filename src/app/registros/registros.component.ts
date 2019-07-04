@@ -6,6 +6,7 @@ import { DataService } from '../data.service';
   templateUrl: './registros.component.html',
   styleUrls: ['./registros.component.css']
 })
+
 export class RegistrosComponent implements OnInit {
 
   solicitacoes: Object;
