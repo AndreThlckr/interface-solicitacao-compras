@@ -1,26 +1,39 @@
-<h3>Avaliar solicitação</h3>
+<h3 class="text-center">Avaliar solicitação</h3>
+<hr>
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input id="nome" class="form-control" formControlName="nome" />
+    </div>
 
-<div>
-    <input type="text" [(ngModel)]="solicitacaoData.nome" placeholder="Nome">
-</div>
+    <div class="form-group">
+        <label for="descricao">Descrição do item:</label>
+        <input id="descricao" class="form-control" formControlName="descricao" />
+    </div>
 
-<div>
-    <input type="text" [(ngModel)]="solicitacaoData.descricao" placeholder="Descrição">
-</div>
+    <div class="row">
+        <div class="form-group col-xs-3">
+            <label for="preco">Preço</label>
+            <input id="preco" class="form-control" formControlName="preco" currencyMask min="0.01"
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" />
+        </div>
+    </div>
 
-<div>
-    <input type="number" [(ngModel)]="solicitacaoData.preco" placeholder="Preço">
-</div>
+    <div class="form-group">
+        <label for="situacao">Aprovar/Reprovar:</label>
+        <select id="situacao" class="form-control" formControlName="situacao"
+            [ngClass]="{'form-submitted': formSubmitted}">
+            <option [ngValue]="null">Selecione...</option>
+            <option value="true">Aprovar</option>
+            <option value="false">Reprovar</option>
+        </select>
+    </div>
 
-<select [(ngModel)]="solicitacaoData.situacao">
-    <option value="true">Aprovar</option>
-    <option value="false">Reprovar</option>
-</select>
+    <div class="form-group" [hidden]="!solicitacaoNegada">
+        <label for="observacao">Observação:</label>
+        <input id="observacao" class="form-control" placeholder="Descreva o motivo da recusa..."
+            formControlName="observacao" [ngClass]="{'form-submitted': formSubmitted}" />
+    </div>
 
-<div>
-    <input type="text" [(ngModel)]="solicitacaoData.observacao" placeholder="Observação">
-</div>
-
-<div>
-    <button (click)="updateSolicitacao()">Aprovar/reprovar solicitação</button>
-</div>
+    <button type="submit" class="btn btn-primary">{{solicitacaoNegada?'Reprovar solicitação':'Aprovar solicitação'}}</button>
+</form>
