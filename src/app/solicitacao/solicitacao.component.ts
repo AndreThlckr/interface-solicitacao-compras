@@ -12,12 +12,7 @@ import { Solicitacao } from '../solicitacao';
 export class SolicitacaoComponent implements OnInit {
 
   form: FormGroup;
-  solicitacaoDetails: any;
   formSubmitted = false;
-
-
-
-  //@Input() solicitacaoDetails = { nome: '', descricao: '', preco: 0 }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,8 +26,8 @@ export class SolicitacaoComponent implements OnInit {
 
   buildForm() {
     this.form = this.formBuilder.group({
-      nome: [null, [Validators.required]],
-      descricao: [null, [Validators.required]],
+      nome: [null, [Validators.required, Validators.minLength(3)]],
+      descricao: [null, [Validators.required, Validators.minLength(5)]],
       preco: [null, [Validators.required]],
     });
   }
@@ -42,17 +37,11 @@ export class SolicitacaoComponent implements OnInit {
     this.formSubmitted = true;
 
     if (this.form.valid) {
+      //copia os dados do formulário para 'result' e cria solicitacao
       const result: Solicitacao = Object.assign({}, this.form.value);
       this.dataService.createSolicitacao(result).subscribe((data: {}) => {
         this.router.navigate([''])
       })
     }
   }
-
-  addSolicitacao() {
-    this.dataService.createSolicitacao(this.solicitacaoDetails).subscribe((data: {}) => {
-      this.router.navigate([''])
-    })
-  }
-
 }
