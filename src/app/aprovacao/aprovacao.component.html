@@ -1,1 +1,26 @@
-<p>aprovacao works!</p>
+<h3>Avaliar solicitação</h3>
+
+<div>
+    <input type="text" [(ngModel)]="solicitacaoData.nome" placeholder="Nome">
+</div>
+
+<div>
+    <input type="text" [(ngModel)]="solicitacaoData.descricao" placeholder="Descrição">
+</div>
+
+<div>
+    <input type="number" [(ngModel)]="solicitacaoData.preco" placeholder="Preço">
+</div>
+
+<select [(ngModel)]="solicitacaoData.situacao">
+    <option value="true">Aprovar</option>
+    <option value="false">Reprovar</option>
+</select>
+
+<div>
+    <input type="text" [(ngModel)]="solicitacaoData.observacao" placeholder="Observação">
+</div>
+
+<div>
+    <button (click)="updateSolicitacao()">Aprovar/reprovar solicitação</button>
+</div>

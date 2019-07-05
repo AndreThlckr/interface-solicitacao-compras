@@ -10,7 +10,7 @@ import { ListaDeEsperaComponent } from './lista-de-espera/lista-de-espera.compon
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'solicitacao', component: SolicitacaoComponent },
-  { path: 'aprovacao', component: AprovacaoComponent },
+  { path: 'aprovacao/:id', component: AprovacaoComponent },
   { path: 'registros', component: RegistrosComponent },
   { path: 'lista-de-espera', component: ListaDeEsperaComponent }
 ];

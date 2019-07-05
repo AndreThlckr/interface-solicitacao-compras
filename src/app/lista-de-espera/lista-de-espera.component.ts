@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-lista-de-espera',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaDeEsperaComponent implements OnInit {
 
-  constructor() { }
+  Solicitacao: any = [];
+
+  constructor(public dataService: DataService) { }
 
   ngOnInit() {
+    this.loadSolicitacoes()
   }
+
+  loadSolicitacoes() {
+    return this.dataService.getSolicitacoesEmEspera().subscribe((data: {}) => {
+      this.Solicitacao = data;
+    })
+  }
+
+  
 
 }

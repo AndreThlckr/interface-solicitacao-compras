@@ -28,6 +28,14 @@ export class DataService {
     )
   }
 
+  getSolicitacoesEmEspera(): Observable<Solicitacao> {
+    return this.http.get<Solicitacao>(this.apiURL + '/solicitacoes/emespera')
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   getSolicitacao(id): Observable<Solicitacao> {
     return this.http.get<Solicitacao>(this.apiURL + '/solicitacoes/' + id)
     .pipe(
