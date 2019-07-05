@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {LOCALE_ID} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +33,6 @@ registerLocaleData(localePT);
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
     CurrencyMaskModule
   ],
   providers: [
