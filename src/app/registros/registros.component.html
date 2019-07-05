@@ -1,17 +1,23 @@
-<form>
-  <label>
-    Nome:
-    <input type="text">
-  </label>
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="nome">Nome: </label>
+    <input id="nome" placeholder="Ex.: André Theilacker" formControlName="nome" />
+  </div>
 
-  <label>
-    Descrição:
-    <input type="text">
-  </label>
+  <div class="form-group">
+    <label for="descricao">Descrição: </label>
+    <input id="descricao" placeholder="Ex.: André Theilacker" formControlName="descricao" />
+  </div>
 
-  <label><input type="radio" name="sit" value="" checked> Todos</label>
-  <label><input type="radio" name="sit" value="true"> Aprovados</label>
-  <label><input type="radio" name="sit" value="false"> Reprovados</label>
+  <div class="form-group">
+    <label for="situacao">Situação:</label>
+    <select id="situacao" class="form-control" formControlName="situacao">
+      <option value="">Todos</option>
+      <option value="true">Aprovar</option>
+      <option value="false">Reprovar</option>
+    </select>
+  </div>
+    <button type="button" class="btn btn-primary" (click)="btnClick();">Pesquisar</button>
 </form>
 
 
@@ -28,9 +34,6 @@
     <p>Situação: {{solicitacao.situacao?'aprovada':'reprovada'}}</p>
     <p *ngIf="solicitacao.situacao === false">
       Motivo: {{ solicitacao.observacao }}
-      </p>
+    </p>
   </li>
- </ul>
-      
-    
-  
+</ul>

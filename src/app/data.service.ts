@@ -20,8 +20,8 @@ export class DataService {
     })
   }  
 
-  getSolicitacoes(): Observable<Solicitacao> {
-    return this.http.get<Solicitacao>(this.apiURL + '/solicitacoes/busca')
+  getSolicitacoes(nome, descricao, situacao): Observable<Solicitacao> {
+    return this.http.get<Solicitacao>(this.apiURL + '/solicitacoes/busca?nome=' + nome + '&descricao=' + descricao + '&situacao=' + situacao)
     .pipe(
       retry(1),
       catchError(this.handleError)
