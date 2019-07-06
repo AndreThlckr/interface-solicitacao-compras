@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../shared/services/data.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -30,19 +30,8 @@ export class RegistrosComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-
-    this.actRoute.queryParamMap.subscribe(queryParams => {
-      this.nomeParam = queryParams.get("nome");
-      this.descricaoParam = queryParams.get("descricao");
-      this.situacaoParam = queryParams.get("situacao");
-    });
-
-    this.form.setValue({
-      nome: this.nomeParam,
-      descricao: this.descricaoParam,
-      situacao: this.situacaoParam
-    });
-
+    this.getSearchParameters();
+    this.updateFormData();
     this.loadSolicitacoes();
   }
 
@@ -51,6 +40,22 @@ export class RegistrosComponent implements OnInit {
       nome: [],
       descricao: [],
       situacao: []
+    });
+  }
+
+  getSearchParameters() {
+    this.actRoute.queryParamMap.subscribe(queryParams => {
+      this.nomeParam = queryParams.get("nome");
+      this.descricaoParam = queryParams.get("descricao");
+      this.situacaoParam = queryParams.get("situacao");
+    });
+  }
+
+  updateFormData() {
+    this.form.setValue({
+      nome: this.nomeParam,
+      descricao: this.descricaoParam,
+      situacao: this.situacaoParam
     });
   }
 

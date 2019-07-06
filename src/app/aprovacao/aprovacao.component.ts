@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../shared/services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Solicitacao } from '../solicitacao';
+import { Solicitacao } from '../shared/models/solicitacao';
 
 @Component({
   selector: 'app-aprovacao',
@@ -28,11 +28,7 @@ export class AprovacaoComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.setSituacaoValidators();
-
-    this.dataService.getSolicitacao(this.id)
-      .subscribe(data => {
-        this.form.patchValue(data);
-      });
+    this.loadSituacao();
   }
 
   buildForm() {
@@ -77,6 +73,13 @@ export class AprovacaoComponent implements OnInit {
         }
 
         observacaoControl.updateValueAndValidity();
+      });
+  }
+
+  loadSituacao() {
+    this.dataService.getSolicitacao(this.id)
+      .subscribe(data => {
+        this.form.patchValue(data);
       });
   }
 

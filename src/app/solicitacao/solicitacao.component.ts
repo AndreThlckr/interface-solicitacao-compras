@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../shared/services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Solicitacao } from '../solicitacao';
+import { Solicitacao } from '../shared/models/solicitacao';
 
 @Component({
   selector: 'app-solicitacao',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { DataService } from '../shared/services/data.service';
 
 @Component({
   selector: 'app-lista-de-espera',
@@ -21,7 +21,4 @@ export class ListaDeEsperaComponent implements OnInit {
       this.Solicitacao = data;
     })
   }
-
-  
-
 }
