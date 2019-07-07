@@ -16,4 +16,5 @@ Use o comando `ng serve` no diretório do projeto, através do Angular CLI. O se
 
 ## Reconhecimentos
 
-* Billie Thompson - [PurpleBooth](https://github.com/PurpleBooth) - modelo para o arquivo README.md
+* Billie Thompson - [PurpleBooth](https://github.com/PurpleBooth) - modelo para o arquivo README.md.
+* Alligator.io - (https://alligator.io/css/collapsible/) - CSS para animação do formulário de pesquisa.
