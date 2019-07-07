@@ -71,4 +71,13 @@ export class RegistrosComponent implements OnInit {
       + '&situacao=' + this.form.controls['situacao'].value);
   }
 
+  btnClean() {
+    this.form.setValue({
+      nome: '',
+      descricao: '',
+      situacao: ''
+    });
+    this.router.navigateByUrl('/registros');
+  }
+
 }
