@@ -1,39 +1,63 @@
-<form [formGroup]="form">
-  <div class="form-group">
-    <label for="nome">Nome: </label>
-    <input id="nome" placeholder="Ex.: André Theilacker" formControlName="nome" />
-  </div>
+<form [formGroup]="form" role="search">
+  <input id="collapsible" class="toggle" type="checkbox" />
+  <label for="collapsible" class="lbl-toggle">Filtrar solicitações</label>
 
-  <div class="form-group">
-    <label for="descricao">Descrição: </label>
-    <input id="descricao" placeholder="Ex.: André Theilacker" formControlName="descricao" />
-  </div>
+  <div class="collapsible-content">
+    <div class="searchForm">
+      <div>
+        <label for="nome">Nome: </label>
+        <input
+          id="nome"
+          class="default"
+          placeholder="Ex.: André Theilacker..."
+          formControlName="nome"
+        />
+      </div>
 
-  <div class="form-group">
-    <label for="situacao">Situação:</label>
-    <select id="situacao" class="form-control" formControlName="situacao">
-      <option value="">Todos</option>
-      <option value="true">Aprovar</option>
-      <option value="false">Reprovar</option>
-    </select>
+      <div>
+        <label for="descricao">Descrição: </label>
+        <input
+          id="descricao"
+          class="default"
+          placeholder="Ex.: Pilhas AAA..."
+          formControlName="descricao"
+        />
+      </div>
+
+      <div>
+        <label for="situacao">Situação:</label>
+        <select id="situacao" class="default" formControlName="situacao">
+          <option value="">Todos</option>
+          <option value="true">Aprovados</option>
+          <option value="false">Reprovados</option>
+        </select>
+      </div>
+
+      <div class="botoes">
+        <button type="button" (click)="btnClick()">Pesquisar</button>
+        <button type="button" (click)="btnClean()" class="red">
+          Limpar pesquisa
+        </button>
+      </div>
+    </div>
   </div>
-    <button type="button" class="btn btn-primary" (click)="btnClick();">Pesquisar</button>
 </form>
 
-
-<p *ngIf="Solicitacao.length == 0">
+<aside *ngIf="Solicitacao.length == 0" role="alert">
   Não há nenhuma solicitação!
-</p>
+</aside>
 
 <ul *ngIf="Solicitacao.length !== 0">
-  <li *ngFor="let solicitacao of Solicitacao">
-
-    <p>Nome: {{ solicitacao.nome }}</p>
-    <p>Descrição:{{ solicitacao.descricao }}</p>
-    <p>Valor: {{ solicitacao.preco | currency:'BRL'}}.</p>
-    <p>Situação: {{solicitacao.situacao?'aprovada':'reprovada'}}</p>
+  <li class="caixa" *ngFor="let solicitacao of Solicitacao">
+    <p><strong>Nome:</strong> {{ solicitacao.nome }}</p>
+    <p><strong>Descrição:</strong> {{ solicitacao.descricao }}</p>
+    <p><strong>Valor:</strong> {{ solicitacao.preco | currency: "BRL" }}.</p>
+    <p>
+      <strong>Situação:</strong>
+      {{ solicitacao.situacao ? "aprovada" : "reprovada" }}
+    </p>
     <p *ngIf="solicitacao.situacao === false">
-      Motivo: {{ solicitacao.observacao }}
+      <strong>Motivo:</strong> {{ solicitacao.observacao }}
     </p>
   </li>
 </ul>

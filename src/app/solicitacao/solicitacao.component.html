@@ -1,26 +1,20 @@
-<h3 class="text-center">Fazer solicitação</h3>
-<hr>
 <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-    <div class="form-group">
+    <div class="formulario">
+        <h3 class="formTitulo">Fazer solicitação</h3>
+
         <label for="nome">Nome</label>
         <input id="nome" class="form-control" placeholder="Ex.: André Theilacker" formControlName="nome"
             [ngClass]="{'form-submitted': formSubmitted}" />
-    </div>
 
-    <div class="form-group">
         <label for="descricao">Descrição do item:</label>
         <input id="descricao" class="form-control" placeholder="Ex.: pilhas AAA" formControlName="descricao"
             [ngClass]="{'form-submitted': formSubmitted}" />
-    </div>
 
-    <div class="row">
-        <div class="form-group col-xs-3">
-            <label for="preco">Preço</label>
-            <input id="preco" class="form-control" currencyMask min="0.01"
-                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" formControlName="preco"
-                [ngClass]="{'form-submitted': formSubmitted}" />
-        </div>
+        <label for="preco">Preço</label>
+        <input id="preco" class="form-control" currencyMask min="0.01"
+            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" formControlName="preco"
+            [ngClass]="{'form-submitted': formSubmitted}" />
+            
+        <button type="submit" class="btn btn-primary">Solicitar</button>
     </div>
-
-    <button type="submit" class="btn btn-primary">Solicitar</button>
 </form>

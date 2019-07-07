@@ -1,39 +1,44 @@
-<h3 class="text-center">Avaliar solicitação</h3>
-<hr>
 <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-    <div class="form-group">
-        <label for="nome">Nome</label>
-        <input id="nome" class="form-control" formControlName="nome" />
-    </div>
+  <div class="formulario">
+    <h3 class="formTitulo">Avaliar solicitação</h3>
 
-    <div class="form-group">
-        <label for="descricao">Descrição do item:</label>
-        <input id="descricao" class="form-control" formControlName="descricao" />
-    </div>
+    <label for="nome">Nome</label>
+    <input id="nome" formControlName="nome" />
 
-    <div class="row">
-        <div class="form-group col-xs-3">
-            <label for="preco">Preço</label>
-            <input id="preco" class="form-control" formControlName="preco" currencyMask min="0.01"
-                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" />
-        </div>
-    </div>
+    <label for="descricao">Descrição do item:</label>
+    <input id="descricao" formControlName="descricao" />
 
-    <div class="form-group">
-        <label for="situacao">Aprovar/Reprovar:</label>
-        <select id="situacao" class="form-control" formControlName="situacao"
-            [ngClass]="{'form-submitted': formSubmitted}">
-            <option [ngValue]="null">Selecione...</option>
-            <option value="true">Aprovar</option>
-            <option value="false">Reprovar</option>
-        </select>
-    </div>
+    <label for="preco">Preço</label>
+    <input
+      id="preco"
+      formControlName="preco"
+      currencyMask
+      min="0.01"
+      [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }"
+    />
 
-    <div class="form-group" [hidden]="!solicitacaoNegada">
-        <label for="observacao">Observação:</label>
-        <input id="observacao" class="form-control" placeholder="Descreva o motivo da recusa..."
-            formControlName="observacao" [ngClass]="{'form-submitted': formSubmitted}" />
-    </div>
+    <label for="situacao">Aprovar/Reprovar:</label>
+    <select
+      id="situacao"
+      formControlName="situacao"
+      [ngClass]="{ 'form-submitted': formSubmitted }"
+    >
+      <option [ngValue]="null" disabled>Selecione...</option>
+      <option value="true">Aprovar</option>
+      <option value="false">Reprovar</option>
+    </select>
 
-    <button type="submit" class="btn btn-primary">{{solicitacaoNegada?'Reprovar solicitação':'Aprovar solicitação'}}</button>
+    <label for="observacao" [hidden]="!solicitacaoNegada">Observação:</label>
+    <textarea
+      id="observacao"
+      [hidden]="!solicitacaoNegada"
+      placeholder=" Descreva o motivo da recusa..."
+      formControlName="observacao"
+      [ngClass]="{ 'form-submitted': formSubmitted }"
+    ></textarea>
+
+    <button type="submit">
+      {{ solicitacaoNegada ? "Reprovar solicitação" : "Aprovar solicitação" }}
+    </button>
+  </div>
 </form>

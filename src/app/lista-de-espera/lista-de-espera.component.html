@@ -1,15 +1,15 @@
-<p *ngIf="Solicitacao.length == 0">
-        Não há nenhuma solicitação para ser analisada!
-      </p>
-      
-      <ul *ngIf="Solicitacao.length !== 0">
-        <li *ngFor="let solicitacao of Solicitacao">
-      
-          <p>Nome: {{ solicitacao.nome }}</p>
-          <p>Descrição:{{ solicitacao.descricao }}</p>
-          <p>Valor: {{ solicitacao.preco | currency:'BRL'}}.</p>
-          <p>Situação: em aberto</p>
-          <button routerLink="/aprovacao/{{solicitacao.id}}"> Analisar </button>
+<aside *ngIf="Solicitacao.length == 0" role="alert">
+  Não há nenhuma solicitação para ser analisada!
+</aside>
 
-        </li>
-       </ul>
+<ul *ngIf="Solicitacao.length !== 0">
+  <li *ngFor="let solicitacao of Solicitacao">
+    <p><strong>Nome:</strong> {{ solicitacao.nome }}</p>
+    <p><strong>Descrição:</strong> {{ solicitacao.descricao }}</p>
+    <p><strong>Valor:</strong> {{ solicitacao.preco | currency: "BRL" }}.</p>
+    <p><strong>Situação:</strong> em aberto</p>
+    <p>
+      <button routerLink="/aprovacao/{{ solicitacao.id }}">Analisar</button>
+    </p>
+  </li>
+</ul>
