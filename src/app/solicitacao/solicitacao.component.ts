@@ -40,7 +40,8 @@ export class SolicitacaoComponent implements OnInit {
       //copia os dados do formulário para 'result' e cria solicitacao
       const result: Solicitacao = Object.assign({}, this.form.value);
       this.dataService.createSolicitacao(result).subscribe((data: {}) => {
-        this.router.navigate([''])
+        this.router.navigate(['']);
+        window.alert('Solicitação realizada com sucesso!');
       })
     }
   }

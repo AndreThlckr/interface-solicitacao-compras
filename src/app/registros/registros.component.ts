@@ -15,9 +15,9 @@ export class RegistrosComponent implements OnInit {
   form: FormGroup;
 
   //parametros de pesquisa
-  nomeParam: string = '';
-  descricaoParam: string = '';
-  situacaoParam: string = '';
+  nomeParam: string;
+  descricaoParam: string;
+  situacaoParam: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -45,9 +45,9 @@ export class RegistrosComponent implements OnInit {
 
   getSearchParameters() {
     this.actRoute.queryParamMap.subscribe(queryParams => {
-      this.nomeParam = queryParams.get("nome");
-      this.descricaoParam = queryParams.get("descricao");
-      this.situacaoParam = queryParams.get("situacao");
+      this.nomeParam = queryParams.get("nome") || '';
+      this.descricaoParam = queryParams.get("descricao") || '';
+      this.situacaoParam = queryParams.get("situacao") || '';
     });
   }
 
